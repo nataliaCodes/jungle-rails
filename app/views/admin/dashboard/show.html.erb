@@ -1,2 +1,19 @@
-<h1>Admin::Dashboard#show</h1>
-<p>Find me in app/views/admin/dashboard/show.html.erb</p>
+<h1>Dashboard</h1>
+<table class="table table-hover table-bordered">
+  <tr>
+    <td>Products:</td>
+    <td> <%= @products %> </td>
+    <td> <%= link_to 'See Products', controller: 'products' %> </td>
+  </tr>
+  <tr>
+    <td>Categories:</td>
+    <td><%= @categories %></td>
+    <td> 
+      <%= link_to 'See Apparel', @apparel %> <br/>
+      <%= link_to 'See Electronics', @electronics %> <br/>
+      <%= link_to 'See Furniture', @furniture %> 
+    </td>
+  </tr>
+</table>
+
+
