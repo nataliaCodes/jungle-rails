@@ -4,11 +4,10 @@
     <h1>My Cart</h1>
   </header>
 
-  <% if !@products %>
-    <%=render 'with_products' %>
-    
-  <% else %>
+  <% if @cart_empty %>
     <%= render 'empty' %>
+  <% else %>
+    <%= render 'with_products' %>
   <% end %>
-
+    
 </section>
