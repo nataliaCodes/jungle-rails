@@ -4,8 +4,10 @@ class Admin::DashboardController < ApplicationController
 
   def show
 
-    @products = Product.count
-    @categories = Category.count
+    @products_nr = Product.count
+    @categories_nr = Category.count
+    @categories = Category.all
+
     @apparel = Category.find(id=1)
     @electronics = Category.find(id=2)
     @furniture = Category.find(id=3)
