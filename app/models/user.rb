@@ -8,8 +8,11 @@ class User < ActiveRecord::Base
 
   def authenticate_with_credentials(email, password)
 
-    @user = User.find_by_email(/email/i)
+    formatted_email = email.strip
 
+    @user = User.find_by_email(formatted_email)
+
+    #user exists and the password matches
     if @user && @user.authenticate(password)
       @user
     else
