@@ -6,7 +6,6 @@ class SessionsController < ApplicationController
   def create
     user = User.authenticate_with_credentials(params[:email], params[:password])
     
-    #user exists AND password is correct
     if user
 
       #create cookie and redirect to homepage
