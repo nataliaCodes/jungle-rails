@@ -6,11 +6,9 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
   validates_length_of :password, minimum: 8
 
-  before_save { email.downcase! }
-
   def authenticate_with_credentials(email, password)
 
-    formatted_email = email.strip.downcase
+    formatted_email = email.strip
 
     @user = User.find_by_email(formatted_email)
 
