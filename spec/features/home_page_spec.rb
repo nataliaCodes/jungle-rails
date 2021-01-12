@@ -11,6 +11,7 @@ RSpec.feature "HomePages", type: :feature do
       @category.products.create!(
         name:  Faker::Hipster.sentence(3),
         description: Faker::Hipster.paragraph(4),
+        image: open_asset('apparel1.jpg'),
         quantity: 10,
         price: 64.99
       )
@@ -23,7 +24,7 @@ RSpec.feature "HomePages", type: :feature do
 
     # DEBUG / VERIFY
     save_screenshot('home_page.png')
-    expect(page).to have_css 'article.product', count: 100
+    expect(page).to have_css 'article.product', count: 10
   end
 
 end
