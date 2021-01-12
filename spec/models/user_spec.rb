@@ -2,82 +2,82 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 
-  # describe 'Validations: ' do
+  describe 'Validations: ' do
 
-  #   it 'must have first_name, last_name, email, password, password_confirmation fields' do
+    it 'must have first_name, last_name, email, password, password_confirmation fields' do
 
-  #     @user = User.create(first_name: "test", last_name: "user", email: "test@test.com", password: "somestring", password_confirmation: "somestring")
+      @user = User.create(first_name: "test", last_name: "user", email: "test@test.com", password: "somestring", password_confirmation: "somestring")
 
-  #     expect(@user.first_name).not_to be(nil)
-  #     expect(@user.last_name).not_to be(nil)
-  #     expect(@user.email).not_to be(nil)
-  #     expect(@user.password).not_to be(nil)
-  #     expect(@user.password_confirmation).not_to be(nil)
+      expect(@user.first_name).not_to be(nil)
+      expect(@user.last_name).not_to be(nil)
+      expect(@user.email).not_to be(nil)
+      expect(@user.password).not_to be(nil)
+      expect(@user.password_confirmation).not_to be(nil)
 
-  #   end
+    end
 
-  #   it 'must have :first_name field' do
+    it 'must have :first_name field' do
 
-  #     @user = User.create(first_name: "test")
+      @user = User.create(first_name: "test")
 
-  #     expect(@user.first_name).not_to be(nil)
+      expect(@user.first_name).not_to be(nil)
 
-  #   end
+    end
 
-  #   it 'must have :last_name field' do
+    it 'must have :last_name field' do
 
-  #     @user = User.create(last_name: "user")
+      @user = User.create(last_name: "user")
 
-  #     expect(@user.last_name).not_to be(nil)
+      expect(@user.last_name).not_to be(nil)
 
-  #   end
+    end
 
-  #   it 'must have :email field' do
+    it 'must have :email field' do
 
-  #     @user = User.create(email: "test@test.com")
+      @user = User.create(email: "test@test.com")
 
-  #     expect(@user.email).not_to be(nil)
+      expect(@user.email).not_to be(nil)
 
-  #   end
+    end
 
-  #   it 'must have :password field' do
+    it 'must have :password field' do
 
-  #     @user = User.create(password: "somestring")
+      @user = User.create(password: "somestring")
 
-  #     expect(@user.password).not_to be(nil)
+      expect(@user.password).not_to be(nil)
 
-  #   end
+    end
 
-  #   it 'must have :password_confirmation field' do
+    it 'must have :password_confirmation field' do
 
-  #     @user = User.create(password_confirmation: "somestring")
+      @user = User.create(password_confirmation: "somestring")
 
-  #     expect(@user.password_confirmation).not_to be(nil)
+      expect(@user.password_confirmation).not_to be(nil)
 
-  #   end
+    end
 
-  # end
+  end
 
   describe 'New user' do
 
-    # it 'must have matching :password and :password_confirmation fields' do
+    it 'must have matching :password and :password_confirmation fields' do
 
-    #   @user = User.create(password: "somestring", password_confirmation: "somestring")
+      @user = User.create(password: "somestring", password_confirmation: "somestring")
 
-    #   @password_confirmation = @user.password_confirmation
-    #   expect(@user.password).to eq(@password_confirmation)
+      @password_confirmation = @user.password_confirmation
+      expect(@user.password).to eq(@password_confirmation)
 
-    # end
+    end
 
-    # it 'returns error if :password and :password_confirmation fields do not match' do
+    it 'returns error if :password and :password_confirmation fields do not match' do
 
-    #   @user = User.create(password: "somestring", password_confirmation: "someotherstring")
+      @user = User.create(password: "somestring", password_confirmation: "someotherstring")
 
-    #   @password_confirmation = @user.password_confirmation
-    #   expect(@user.password).not_to eq(@password_confirmation)
-    #   expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+      @password_confirmation = @user.password_confirmation
+      expect(@user.password).not_to eq(@password_confirmation)
+      expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
 
-    # end
+    end
 
     it 'must have unique email' do
 
@@ -93,16 +93,30 @@ RSpec.describe User, type: :model do
 
     end
 
-    # it 'must return error if email exists in the DB' do
+    it 'must return error if email exists in the DB' do
 
-    #   @user = User.create(email: "test@test.com")
-    #   @input_email = "test@test.com"
+      @user = User.create(first_name: "test", last_name: "user", email: "TEST@test.com", password: "somestring", password_confirmation: "somestring")
       
-    # end
+      @emails = User.pluck(:email)
+      @lower_case_emails = @emails.map(&:downcase)
+      @input_email = "test@test.com".downcase
 
-    # it 'password must have a minimum length of 8 characters' do
+      p @emails.inspect
+      p @lower_case_emails.inspect
+      p @input_email.inspect
 
-    # end
+      expect(@lower_case_emails).to include(@input_email)
+      expect(@user.errors.full_messages).to include("Email is in use")
+      
+    end
+
+    it 'password must have a minimum length of 8 characters' do
+
+      @user = User.create(first_name: "test", last_name: "user", email: "TEST@test.com", password: "somestring", password_confirmation: "somestring")
+
+      expect(@user.password.length).to be > 8
+
+    end
 
   end
 end
