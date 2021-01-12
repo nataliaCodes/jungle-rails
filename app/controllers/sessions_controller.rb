@@ -4,10 +4,10 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.authenticate_with_credentials(params[:email], params[:password])
+    user = User.find_by_email(params[:email])
     
     #user exists AND password is correct
-    if user
+    if user && user.authenticate(params[:password])
 
       #create cookie and redirect to homepage
       session[:user_id] = user.id
