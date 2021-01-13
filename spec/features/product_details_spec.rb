@@ -18,14 +18,18 @@ RSpec.feature "ProductDetails", type: :feature, js: true do
     end
 
   scenario "User can navigate from the home page to the product detail page by clicking on a product" do
-    # ACT
+
     visit root_path
     save_screenshot 'home_page.png'
 
+    #find 'a' tag inside the first article's footer and click it
     first('article.product').find('footer').find('a').click
+
+    path = page.current_path
+    visit path
     save_screenshot 'after_details.png'
 
-    expect()
+    expect(page.current_path).to include('products')
 
   end
 
