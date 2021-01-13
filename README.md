@@ -5,8 +5,8 @@ A mini e-commerce application built with Rails 4.2 for purposes of teaching Rail
 The app allows for admin users who need to log in in order to be able to add or delete products and categories. It also allows for non-admin user creation, log in and product purchase.
 
 ![1](https://github.com/nataliaCodes/jungle-rails/blob/master/screenshots/Jungle-1.png)
-![2](https://github.com/nataliaCodes/jungle-rails/blob/master/screenshots/Jungle-2.png)
-![3](https://github.com/nataliaCodes/jungle-rails/blob/master/screenshots/Jungle-3.png)
+![2](https://github.com/nataliaCodes/jungle-rails/blob/master/screenshots/jungle-2.png)
+![3](https://github.com/nataliaCodes/jungle-rails/blob/master/screenshots/jungle-3.png)
 
 
 ## Setup
