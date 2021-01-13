@@ -22,21 +22,10 @@ RSpec.feature "ProductDetails", type: :feature, js: true do
     visit root_path
     save_screenshot 'home_page.png'
 
-    #find all article.product elements
-    #then focus first one
-    # within find('article.product') do
-    #   first('footer').trigger('focus')
-    # end
-
-    # first('article.product').trigger('focus')
-    # save_screenshot 'focused_product.png'
-
-    find("Details &raquo;", visible: false).click
-
-    # click_on 'Details &raquo;'
+    first('article.product').find('footer').find('a').click
     save_screenshot 'after_details.png'
 
-
+    expect()
 
   end
 
