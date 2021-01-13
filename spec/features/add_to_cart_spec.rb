@@ -21,6 +21,12 @@ RSpec.feature "AddToCarts", type: :feature, js: true do
 
       visit root_path
       save_screenshot 'home_page.png'
+  
+      #find button inside the first article and click it
+      first('article.product').find('button').click
+      save_screenshot 'after_button_click.png'
+  
+      expect(page).to have_text('My Cart (1)')
 
     end
 end
