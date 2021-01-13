@@ -165,9 +165,5 @@ RSpec.describe User, type: :model do
 
     end
 
-    it 'test' do
-
-    end
-
   end
 end

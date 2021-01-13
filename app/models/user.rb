@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
   before_save { email.downcase! }
 
-  def authenticate_with_credentials(email, password)
+  def self.authenticate_with_credentials(email, password)
 
     formatted_email = email.strip.downcase
 
