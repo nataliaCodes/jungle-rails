@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 
     formatted_email = email.strip.downcase
 
-    user = User.find_by_email(formatted_email)
+    user = self.find_by_email(formatted_email)
 
     #user exists and the password matches
     if user && user.authenticate(password)
